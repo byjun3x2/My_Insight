@@ -1,4 +1,4 @@
-package com.myinsight.backend;
+package com.myinsight; // 패키지 위치 변경
 
 import io.github.cdimascio.dotenv.Dotenv;
 import org.springframework.boot.SpringApplication;
