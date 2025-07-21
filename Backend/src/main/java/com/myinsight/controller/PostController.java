@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/posts")
@@ -27,8 +28,16 @@ public class PostController {
     }
 
     @PostMapping
-    public Post createPost(@RequestBody Post post) {
-        return postService.createPost(post);
+    public ResponseEntity<Post> createPost(@RequestBody Post post) {
+
+        Post savedPost = postService.createPost(post);
+
+        List<String> comparePosts = postService.getAllPostContents();
+        List<String> recommendations = postService.getRecommendations(savedPost.getContent(), comparePosts);
+
+        savedPost.setRecommendations(recommendations);
+
+        return ResponseEntity.ok(savedPost);
     }
 
     @PutMapping("/{id}")

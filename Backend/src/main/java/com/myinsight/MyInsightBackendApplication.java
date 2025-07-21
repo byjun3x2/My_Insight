@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class MyInsightBackendApplication {
 	public static void main(String[] args) {
-		Dotenv dotenv = Dotenv.configure().load();  // .env 파일 로드
+		Dotenv dotenv = Dotenv.configure().load();
 
 		// null 체크 추가
 		String dbUsername = dotenv.get("DB_USERNAME");
